@@ -1,0 +1,1 @@
+﻿Get-ADComputer -Filter * -SearchBase "Your OU Path" -Properties * | Sort LastLogon | Select Name, LastLogonDate,@{Name='LastLogon';Expression={[DateTime]::FromFileTime($_.LastLogon)}} | Export-Csv C:\log\export.csv -NoTypeInformation
